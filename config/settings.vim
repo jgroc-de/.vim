@@ -20,11 +20,11 @@ if &tabpagemax < 50
 	set tabpagemax=50
 endif
 
-"Bépo config
+" --- Bépo config
 source ~/.vim/config/vimrc.bepo
 imap ,, <Esc>
 
-"Nerdtree config
+" --- Nerdtree config
 nnoremap <silent> <F9> :NERDTree<CR>
 autocmd vimenter * NERDTree
 autocmd StdinReadPre * let s:std_in=1
@@ -34,7 +34,7 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 
-"Syntastic config
+" --- Syntastic config
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -44,8 +44,34 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-"Tagbar config
+" --- Tagbar config
 nmap <F8> :TagbarToggle<CR>
+
+" --- Close Tag config
+" filenames like *.xml, *.html, *.xhtml, ...
+ " These are the file extensions where this plugin is enabled.
+
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
+
+" filenames like *.xml, *.xhtml, ...
+" This will make the list of non-closing tags self-closing in the specified
+" files.
+
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
+
+" integer value [0|1]
+" This will make the list of non-closing tags case-sensitive (e.g. `<Link>`
+" will be closed while `<link>` won't.)
+
+let g:closetag_emptyTags_caseSensitive = 1
+
+" Shortcut for closing tags, default is '>'
+
+let g:closetag_shortcut = '>'
+
+" Add > at current position without closing the current tag, default is ''
+
+let g:closetag_close_shortcut = '<leader>>'
 
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
