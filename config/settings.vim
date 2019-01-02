@@ -8,7 +8,6 @@ set foldmethod=marker
 
 set shiftwidth=4
 set tabstop=4
-set expandtab
 set backspace=indent,eol,start
 set autoindent
 set complete-=i
@@ -39,9 +38,9 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
 " --- airline config
@@ -83,3 +82,11 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
+let g:ycm_filetype_blacklist = {
+      \ 'c' : 1,
+      \ 'cpp' : 1,
+      \ 'header' : 1,
+      \ 'asm' : 1,
+      \ 'ruby' : 1,
+      \ 'php' : 1,
+      \}
