@@ -8,7 +8,6 @@ set foldmethod=marker
 
 set shiftwidth=4
 set tabstop=4
-set expandtab
 set backspace=indent,eol,start
 set autoindent
 set complete-=i
@@ -33,48 +32,14 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-
-" --- Syntastic config
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
-
-" --- airline config
-:let g:airline_extensions = []
 
 " --- Tagbar config
 nmap <F8> :TagbarToggle<CR>
-
-" --- Close Tag config
-" filenames like *.xml, *.html, *.xhtml, ...
- " These are the file extensions where this plugin is enabled.
-
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
-
-" filenames like *.xml, *.xhtml, ...
-" This will make the list of non-closing tags self-closing in the specified
-" files.
-
-let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
-
-" integer value [0|1]
-" This will make the list of non-closing tags case-sensitive (e.g. `<Link>`
-" will be closed while `<link>` won't.)
-
-let g:closetag_emptyTags_caseSensitive = 1
-
-" Shortcut for closing tags, default is '>'
-
-let g:closetag_shortcut = '>'
-
-" Add > at current position without closing the current tag, default is ''
-
-let g:closetag_close_shortcut = '<leader>>'
+let g:tagbar_phpctags_bin='~/.vim/bundle/tagbar-phpctags.vim/bin/phpctags'
 
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
@@ -83,3 +48,10 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
+let g:ycm_filetype_blacklist = {
+      \ 'c' : 1,
+      \ 'cpp' : 1,
+      \ 'header' : 1,
+      \ 'asm' : 1,
+      \ 'ruby' : 1,
+      \}
