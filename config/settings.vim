@@ -1,11 +1,25 @@
 set nu
 set mouse:a
-set incsearch
-filetype plugin indent on
 syntax on
+filetype plugin indent on
+
+" --- searching
+set hlsearch incsearch ignorecase smartcase
+nnoremap <BS> :nohlsearch<cr>
+
+" --- autosave on exit
+set autowrite
+
+nmap <silent> <UP>            :prev<CR>
+nmap <silent> <DOWN>          :next<CR>
+
+" --- search replace -> just type SX/Y<CR>
+nmap  S  :%s//g<LEFT><LEFT>
+
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn, '\%81v', 100)
 
 set foldmethod=marker
-
 set shiftwidth=4
 set tabstop=4
 set backspace=indent,eol,start
@@ -32,15 +46,11 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-
 " --- Tagbar config
 nmap <F8> :TagbarToggle<CR>
 let g:tagbar_phpctags_bin='~/.vim/bundle/tagbar-phpctags.vim/bin/phpctags'
 
+" --- You complete me config
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
