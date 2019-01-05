@@ -10,14 +10,14 @@ nnoremap <BS> :nohlsearch<cr>
 " --- autosave on exit
 set autowrite
 
-nmap <silent> <UP>            :prev<CR>
-nmap <silent> <DOWN>          :next<CR>
+"nmap <silent> <UP>            :prev<CR>
+"nmap <silent> <DOWN>          :next<CR>
 
 " --- search replace -> just type SX/Y<CR>
 nmap  S  :%s//g<LEFT><LEFT>
 
-highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn, '\%81v', 100)
+"highlight ColorColumn ctermbg=magenta
+"call matchadd('ColorColumn, '\%81v', 100)
 
 set foldmethod=marker
 set shiftwidth=4
