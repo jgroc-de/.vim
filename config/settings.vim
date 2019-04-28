@@ -8,19 +8,11 @@ set hlsearch incsearch ignorecase smartcase
 nnoremap <BS> :nohlsearch<cr>
 
 " --- autosave on exit
-set autowrite
+"set autowrite
 
-"nmap <silent> <UP>            :prev<CR>
-"nmap <silent> <DOWN>          :next<CR>
-
-" --- search replace -> just type SX/Y<CR>
-nmap  S  :%s//g<LEFT><LEFT>
-
-"highlight ColorColumn ctermbg=magenta
-"call matchadd('ColorColumn, '\%81v', 100)
-
-set foldmethod=marker
+set foldmethod=manual
 set shiftwidth=4
+set	expandtab
 set tabstop=4
 set backspace=indent,eol,start
 set autoindent
@@ -50,18 +42,36 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 nmap <F8> :TagbarToggle<CR>
 let g:tagbar_phpctags_bin='~/.vim/bundle/tagbar-phpctags.vim/bin/phpctags'
 
-" --- You complete me config
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType c set omnifunc=ccomplete#Complete
-let g:ycm_filetype_blacklist = {
-      \ 'c' : 1,
-      \ 'cpp' : 1,
-      \ 'header' : 1,
-      \ 'asm' : 1,
-      \ 'ruby' : 1,
-      \}
+" --- Synstatic config
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_php_checkers = ['php']
+
+" --- PhpComplete config
+let g:phpcomplete_parse_docblock_comments = 1
+let g:phpcomplete_mappings = {
+  \ 'jump_to_def': ',g',
+  \ 'jump_to_def_tabnew': ',t',
+  \ 'jump_to_def_split': ',s',
+  \ }
+
+autocmd FileType javascript setlocal sw=2 ts=2 et
+autocmd FileType html setlocal sw=2 ts=2 et
+autocmd FileType html.twig setlocal sw=2 ts=2 noet
+autocmd FileType htmldjango.twig setlocal sw=2 ts=2 noet
+
+" --- search under cursor
+map <F4> :execute "grep -R /" . expand("<cword>") . "/j **" <Bar> cw<CR>
+
+function! Phpstan()
+    let test = expand("%:p")
+    !~/learn/dashboard/php/vendor/phpstan/phpstan/bin/phpstan analyse %:p --level=max
+endfunction
+
+:command Phpstan call Phpstan()
