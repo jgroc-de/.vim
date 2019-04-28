@@ -14,14 +14,10 @@ HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
 shopt -s histappend
-#immediately add commands to our history instead of waiting for the end of each session
-#append to the history file immediately with history -a, clear the current history in our session with history -c, and then read the history file that we've appended to, back into our session history with history -r
-PROMPT_COMMAND="history -a"
-
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=5000
-HISTFILESIZE=10000
+HISTSIZE=1000
+HISTFILESIZE=2000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -47,7 +43,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-force_color_prompt=yes
+#force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -95,43 +91,25 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-
-alias i="sudo apt install"
-alias u="sudo apt update"
-alias upgrade="sudo apt upgrade"
-
-# extraire une archive tar.gz
-alias x='tar xzvf'
-# extraire une archive tar.bz2
-alias xj='tar xjvf'
-# créer une archive tar.gz
-alias c='tar czvf'
-# créer une archive tar.bz2
-alias cj='tar cjvf'
-
-# Pour les gros doigts
-alias cd..='cd ..'
-alias grpe='grep'
-alias mroe='more'
-alias iv='vi'
-alias tial='tail'
-alias xs='cd'
-alias vf='cd'
-alias ..=' cd ..'
-
-# Remonter d'un dossier et ls
-alias up="cd .. &amp;&amp; ls --color"
-
-alias du='du -h --max-depth=1'
-alias dusort='du -x --block-size=1048576 | sort -nr'
-alias df='df -h'
-
-alias sd='sudo shutdown -h now'
-alias sr='sudo shutdown -r now'
-alias open='xdg-open'
-
-# Creation des répertoires parents
-alias mkdir='mkdir -p'
+alias open="xdg-open"
+# Easier navigation: .., ..., ...., .....
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+# Shortcuts
+alias app="cd ~/www/html/myeasy"
+alias api="cd ~/www/html/myeasyapi"
+alias openapi="cd ~/www/html/open_api"
+alias widget="cd ~/www/html/elc/packages/widget"
+alias dboard="cd ~/learn/dashboard/php/"
+alias dl="cd ~/Downloads"
+alias dt="cd ~/Desktop"
+alias g="git"
+alias dev="git checkout develop"
+alias out="git checkout"
+alias update="sudo apt update && sudo apt upgrade"
+alias phpstan="~/learn/dashboard/php/vendor/phpstan/phpstan/bin/phpstan analyse"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -156,3 +134,8 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+export PATH="$PATH:$HOME/.composer/vendor/bin"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
