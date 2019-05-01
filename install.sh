@@ -45,4 +45,14 @@ git clone https://github.com/ctrlpvim/ctrlp.vim.git
 #sudo apt-get install cpufrequtils
 #echo 'GOVERNOR="powersave"' | sudo tee /etc/default/cpufrequtils
 #sudo systemctl disable ondemand
-
+#cpufreq-set -g powersave
+#sudo cpufreq-set -g powersave
+#cpufreq-info
+#sudo apt-get install thermald
+#thermald
+#sudo thermald
+#sudo apt-get install tlp tlp-rdw
+#tlp start
+#sudo tlp start
+#sudo apt-get install indicator-cpufreq
+#indicator-cpufreq
