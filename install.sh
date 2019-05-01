@@ -45,3 +45,4 @@ git clone https://github.com/ctrlpvim/ctrlp.vim.git
 #sudo apt-get install cpufrequtils
 #echo 'GOVERNOR="powersave"' | sudo tee /etc/default/cpufrequtils
 #sudo systemctl disable ondemand
+
