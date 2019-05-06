@@ -2,10 +2,11 @@ sudo apt -y update
 sudo apt -y upgrade
 sudo apt -y install vim vlc audacity gimp filezilla chromium-browser steam mysql-server mysql-client gnome-tweak-tool steam htop
 sudo apt -y install gcc make xorg-dev libx11-dev
+#manque node
 sudo apt -y install python3 pip3
 sudo apt -y install php composer php-gd php-xml php-zip php-curl php-intl php-json php-mbstring php-mysql php-xml php-zip
 sudo snap install slack --classic
-sudo snap install skype --classic
+#sudo snap install skype --classic
 sudo snap install spotify --classic
 sudo snap install postman --classic
 #geogebra
