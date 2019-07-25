@@ -24,3 +24,4 @@ cp inputrc ~/.inputrc
 cp bashrc ~/.bashrc
 
 ./vim.sh
+./ssh_git.sh
