@@ -98,18 +98,12 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 # Shortcuts
-alias app="cd ~/www/html/myeasy"
-alias api="cd ~/www/html/myeasyapi"
-alias openapi="cd ~/www/html/open_api"
-alias widget="cd ~/www/html/elc/packages/widget"
-alias dboard="cd ~/learn/dashboard/php/"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias g="git"
 alias dev="git checkout develop"
 alias out="git checkout"
 alias update="sudo apt update && sudo apt upgrade"
-alias phpstan="~/learn/dashboard/php/vendor/phpstan/phpstan/bin/phpstan analyse"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
